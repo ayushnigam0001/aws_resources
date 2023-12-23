@@ -32,17 +32,17 @@ jobs:
             - name: install aws cli
               run: sudo ./aws/install --update
 
-            # - name: Set Stage
-            #   run: /usr/local/bin/aws configure set aws_access_key_id ${{ secrets.ACCESS }}
+            - name: Set Stage
+              run: /usr/local/bin/aws configure set aws_access_key_id ${{ secrets.ACCESS }}
                 
-            # - name: Set key
-            #   run: /usr/local/bin/aws configure set aws_secret_access_key ${{ secrets.SECRET }}
+            - name: Set key
+              run: /usr/local/bin/aws configure set aws_secret_access_key ${{ secrets.SECRET }}
             
-            # - name: Set Region
-            #   run: /usr/local/bin/aws configure set default.region ap-south-1
+            - name: Set Region
+              run: /usr/local/bin/aws configure set default.region ap-south-1
             
-            # - name: Set Output
-            #   run: /usr/local/bin/aws configure set default.output json
+            - name: Set Output
+              run: /usr/local/bin/aws configure set default.output json
 
             - name: Conf Backend
               run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
