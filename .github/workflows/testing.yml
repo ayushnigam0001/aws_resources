@@ -44,9 +44,14 @@ jobs:
             # - name: Set Output
             #   run: /usr/local/bin/aws configure set default.output json
 
+            - name: Conf Backend
+              run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
 
-            - name: List S3
-              run: aws s3 ls
+            - name: Install Terraform
+              uses: hashicorp/setup-terraform@v3
       
-            - name: Print Hello World
-              run: echo "Hello, World!"
+            - name: Terraform Init
+              run: terraform init
+            
+            - name: Terraform Plan
+              run: terraform plan
