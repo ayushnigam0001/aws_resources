@@ -30,7 +30,7 @@ jobs:
               run: unzip awscliv2.zip
             
             - name: install aws cli
-              run: ls -al
+              run: ./aws/install
 
             - name: PWD
               run: pwd
