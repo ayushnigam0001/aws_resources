@@ -15,11 +15,18 @@ jobs:
             #   with:
             #     role-to-assume: arn:aws:iam::111111111111:role/my-github-actions-role-test
             #     aws-region: us-east-1
-            - name: Configure AWS credentials from Test account
-              uses: aws-actions/configure-aws-credentials@v4
-              with:
-                aws-region: ap-south-1  # Replace with your desired AWS region
-                role-to-assume: arn:aws:iam::227390912900:role/GitTerraformRole  # Replace with the ARN of your Terraform role
+
+            # - name: Configure AWS credentials from Test account
+            #   uses: aws-actions/configure-aws-credentials@v4
+            #   with:
+            #     aws-region: ap-south-1  # Replace with your desired AWS region
+            #     role-to-assume: arn:aws:iam::227390912900:role/GitTerraformRole  # Replace with the ARN of your Terraform role
+
+            - name: Configure AWS Manually
+              run: |
+               curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+               unzip awscliv2.zip
+               sudo ./aws/install
             
             - name: Get Backend file
               run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
