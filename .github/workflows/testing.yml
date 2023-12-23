@@ -1,0 +1,23 @@
+name: Terraform Demo
+on: workflow_dispatch
+jobs:
+    Helloworld:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v2
+
+            - name: List Down Content
+              run: ls -al
+      
+            - name: Print Hello World
+              run: echo "Hello, World!"
+
+
+
+# jobs: 
+#     Printing:
+#         steps:
+#             run-on: ubuntu-latest
+#             - name: Print Hello World
+#               run: echo "Hello World!!"
