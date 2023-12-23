@@ -11,7 +11,7 @@ jobs:
               run: ls -al
 
             - name: Download Terraform
-              run: hashicorp/setup-terraform@v3
+              uses: hashicorp/setup-terraform@v3
             
             - name: Terraform version
               run: terraform --version
