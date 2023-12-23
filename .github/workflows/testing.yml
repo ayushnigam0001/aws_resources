@@ -34,10 +34,10 @@ jobs:
 
             - name: Set Stage
               run: |
-                aws configure set aws_access_key_id ${{ secrets.ACCESS }} \
-                aws configure set aws_secret_access_key ${{ secrets.SECRET }} && \
-                aws configure set default.region ap-south-1 && \
-                aws configure set default.output json
+                /usr/local/bin/aws configure set aws_access_key_id ${{ secrets.ACCESS }} \
+                /usr/local/bin/aws configure set aws_secret_access_key ${{ secrets.SECRET }} && \
+                /usr/local/bin/aws configure set default.region ap-south-1 && \
+                /usr/local/bin/aws configure set default.output json
 
 
             - name: List S3
