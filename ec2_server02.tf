@@ -1,4 +1,4 @@
-module "server_01" {
+module "server_02" {
   source            = "git::https://github.com/ayushnigam0001/terraformmodules.git//aws_ec2"
   server_name       = "Server02"
   availability_zone = "ap-south-1a"
