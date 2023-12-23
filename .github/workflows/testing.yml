@@ -1,5 +1,5 @@
 name: Terraform Demo
-on: push
+on: workflow_dispatch
 jobs:
     Helloworld:
         runs-on: ubuntu-latest
@@ -32,8 +32,16 @@ jobs:
             - name: install aws cli
               run: sudo ./aws/install --update
 
-            - name: PWD
-              run: pwd
+            - name: Set Stage
+              run: |
+                aws configure set aws_access_key_id ${{ secrets.ACCESS }} \
+                aws configure set aws_secret_access_key ${{ secrets.SECRET }} && \
+                aws configure set default.region ap-south-1 && \
+                aws configure set default.output json
+
+
+            - name: List S3
+              run: aws s3 ls
       
             - name: Print Hello World
               run: echo "Hello, World!"
