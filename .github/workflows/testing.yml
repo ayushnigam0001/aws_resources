@@ -10,17 +10,11 @@ jobs:
             - name: List Down Content
               run: ls -al
 
-            - name: Read the file content
-              run: cat ec2_server02.tf
+            - name: Download Backend.tf 
+              run: wget https://file-access-by-ayush.s3.ap-south-1.amazonaws.com/backend.tf?${{ secrets.BUCKET }}
+
+            - name: List the backend.tf
+              run: cat backend.tf
       
             - name: Print Hello World
               run: echo "Hello, World!"
-
-
-
-# jobs: 
-#     Printing:
-#         steps:
-#             run-on: ubuntu-latest
-#             - name: Print Hello World
-#               run: echo "Hello World!!"
