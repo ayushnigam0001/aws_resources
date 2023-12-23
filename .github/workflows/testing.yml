@@ -10,13 +10,22 @@ jobs:
             - name: List Down Content
               run: ls -al
 
-            - name: Download Terraform
-              uses: hashicorp/setup-terraform@v3
+            # - name: Configure AWS credentials from Test account
+            #   uses: aws-actions/configure-aws-credentials@v3
+            #   with:
+            #     role-to-assume: arn:aws:iam::111111111111:role/my-github-actions-role-test
+            #     aws-region: us-east-1
+            - name: Configure AWS credentials from Test account
+              uses: aws-actions/configure-aws-credentials@v3
               with:
-                terraform_version: "1.6.5"
+                aws-region: us-east-1  # Replace with your desired AWS region
+                role-to-assume: arn:aws:iam::227390912900:role/GitTerraformRole  # Replace with the ARN of your Terraform role
             
-            - name: Terraform version
-              run: terraform --version
+            - name: Get Backend file
+              run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
+
+            - name: Show the file
+              run: cat backend.tf
       
             - name: Print Hello World
               run: echo "Hello, World!"
