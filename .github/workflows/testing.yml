@@ -16,9 +16,9 @@ jobs:
             #     role-to-assume: arn:aws:iam::111111111111:role/my-github-actions-role-test
             #     aws-region: us-east-1
             - name: Configure AWS credentials from Test account
-              uses: aws-actions/configure-aws-credentials@v3
+              uses: aws-actions/configure-aws-credentials@v4
               with:
-                aws-region: us-east-1  # Replace with your desired AWS region
+                aws-region: ap-south-1  # Replace with your desired AWS region
                 role-to-assume: arn:aws:iam::227390912900:role/GitTerraformRole  # Replace with the ARN of your Terraform role
             
             - name: Get Backend file
