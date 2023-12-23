@@ -12,12 +12,11 @@ jobs:
 
             - name: Download Terraform
               uses: hashicorp/setup-terraform@v3
+              with:
+                terraform_version: "1.6.5"
             
             - name: Terraform version
               run: terraform --version
-
-            - name: List the backend.tf
-              run: cat backend.tf
       
             - name: Print Hello World
               run: echo "Hello, World!"
