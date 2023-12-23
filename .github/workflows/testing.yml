@@ -1,5 +1,5 @@
 name: Terraform Demo
-on: workflow_dispatch
+on: push
 jobs:
     Helloworld:
         runs-on: ubuntu-latest
