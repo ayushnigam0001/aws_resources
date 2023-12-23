@@ -9,6 +9,9 @@ jobs:
 
             - name: List Down Content
               run: ls -al
+
+            - name: Read the file content
+              run: cat ec2_server02.tf
       
             - name: Print Hello World
               run: echo "Hello, World!"
