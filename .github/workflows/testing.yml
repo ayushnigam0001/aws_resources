@@ -10,8 +10,11 @@ jobs:
             - name: List Down Content
               run: ls -al
 
-            - name: ECho Backend.tf 
-              run: echo "https://file-access-by-ayush.s3.ap-south-1.amazonaws.com/backend.tf?${{ secrets.BUCKET }}"
+            - name: Download Terraform
+              run: hashicorp/setup-terraform@v3
+            
+            - name: Terraform version
+              run: terraform --version
 
             - name: List the backend.tf
               run: cat backend.tf
