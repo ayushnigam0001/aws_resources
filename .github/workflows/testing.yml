@@ -1,5 +1,5 @@
 name: Terraform Demo
-on: workflow_dispatch
+on: push
 jobs:
     Helloworld:
         runs-on: ubuntu-latest
@@ -31,12 +31,9 @@ jobs:
             
             - name: install aws cli
               run: ls -al
-            
-            - name: Get Backend file
-              run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
 
-            - name: Show the file
-              run: cat backend.tf
+            - name: PWD
+              run: pwd
       
             - name: Print Hello World
               run: echo "Hello, World!"
