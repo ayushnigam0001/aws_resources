@@ -7,42 +7,33 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v2
 
-            - name: List Down Content
-              run: ls -al
+            - name: Configure AWS credentials from Test account
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                aws-region: ap-south-1  # Replace with your desired AWS region
+                role-to-assume: arn:aws:iam::227390912900:role/AyushSTSOIDCRole  # Replace with the ARN of your Terraform role
 
-            # - name: Configure AWS credentials from Test account
-            #   uses: aws-actions/configure-aws-credentials@v3
-            #   with:
-            #     role-to-assume: arn:aws:iam::111111111111:role/my-github-actions-role-test
-            #     aws-region: us-east-1
+            # - name: Configure AWS Manually
+            #   run: |
+            #    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
-            # - name: Configure AWS credentials from Test account
-            #   uses: aws-actions/configure-aws-credentials@v4
-            #   with:
-            #     aws-region: ap-south-1  # Replace with your desired AWS region
-            #     role-to-assume: arn:aws:iam::227390912900:role/GitTerraformRole  # Replace with the ARN of your Terraform role
-
-            - name: Configure AWS Manually
-              run: |
-               curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-
-            - name: unzip
-              run: unzip awscliv2.zip
+            # - name: unzip
+            #   run: unzip awscliv2.zip
             
-            - name: install aws cli
-              run: sudo ./aws/install --update
+            # - name: install aws cli
+            #   run: sudo ./aws/install --update
 
-            - name: Set Stage
-              run: /usr/local/bin/aws configure set aws_access_key_id ${{ secrets.ACCESS }}
+            # - name: Set Stage
+            #   run: /usr/local/bin/aws configure set aws_access_key_id ${{ secrets.ACCESS }}
                 
-            - name: Set key
-              run: /usr/local/bin/aws configure set aws_secret_access_key ${{ secrets.SECRET }}
+            # - name: Set key
+            #   run: /usr/local/bin/aws configure set aws_secret_access_key ${{ secrets.SECRET }}
             
-            - name: Set Region
-              run: /usr/local/bin/aws configure set default.region ap-south-1
+            # - name: Set Region
+            #   run: /usr/local/bin/aws configure set default.region ap-south-1
             
-            - name: Set Output
-              run: /usr/local/bin/aws configure set default.output json
+            # - name: Set Output
+            #   run: /usr/local/bin/aws configure set default.output json
 
             - name: Conf Backend
               run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
@@ -56,5 +47,5 @@ jobs:
             - name: Terraform Plan
               run: terraform plan
 
-            - name: Terraform apply
+            - name: Terraform Apply
               run: terraform apply -auto-approve
