@@ -4,15 +4,15 @@ jobs:
     Helloworld:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v2
-
             - name: Configure AWS credentials from Test account
               uses: aws-actions/configure-aws-credentials@v2
               with:
-                aws-region: us-west-1  # Replace with your desired AWS region
+                aws-region: ap-south-1  # Replace with your desired AWS region
                 role-session-name: Github
-                role-to-assume: arn:aws:iam::227390912900:role/AyushSTSOIDCRole  # Replace with the ARN of your Terraform role
+                role-to-assume: arn:aws:iam::227390912900:role/GitHubOIDCSTS  # Replace with the ARN of your Terraform role
+
+            - name: Checkout Repository
+              uses: actions/checkout@v2
 
             # - name: Configure AWS Manually
             #   run: |
