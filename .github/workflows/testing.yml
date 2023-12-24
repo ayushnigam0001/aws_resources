@@ -6,7 +6,7 @@ on:
   issue_comment:
     types: [created]
 permissions:
-  id-token: write
+  id-token: write #this is imp to set the token as not have this will not allow to set assumed role
   contents: read
   pull-requests: write
 
@@ -28,56 +28,22 @@ jobs:
           uses: actions/checkout@v3
           with:
             ref: "refs/pull/${{ github.event.issue.number }}/merge"
-        - run: |
-           ls -al &&
-           cat ec2_server02.tf
+        - name: Configure AWS credentials from Test account
+          uses: aws-actions/configure-aws-credentials@v3
+          with:
+            role-to-assume: ${{ secrets.ASSUMED_ROLE }}
+            aws-region: ${{ env.AWS_REGION }}
 
-
-    Background-Setup:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Echo
-            run: echo "Hello World!!"
-
-            # - name: Configure AWS Manually
-            #   run: |
-            #    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-
-            # - name: unzip
-            #   run: unzip awscliv2.zip
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+  
+        - name: Terraform Init
+          run: terraform init
             
-            # - name: install aws cli
-            #   run: sudo ./aws/install --update
+        - name: Terraform Plan
+          run: terraform plan
 
-          - name: Configure AWS credentials from Test account
-            uses: aws-actions/configure-aws-credentials@v3
-            with:
-              role-to-assume: arn:aws:iam::227390912900:role/GitHubOIDCSTS
-              aws-region: ap-south-1  # Replace with your desired AWS region
-
-            # - name: Checkout Repository
-            #   uses: actions/checkout@v2
-
-            
-
-            # - name: Set Stage
-            #   run: |
-            #     /usr/local/bin/aws configure set aws_access_key_id ${{ secrets.ACCESS }} &&\
-            #     /usr/local/bin/aws configure set aws_secret_access_key ${{ secrets.SECRET }} &&\
-            #     /usr/local/bin/aws configure set default.region ap-south-1 &&\
-            #     /usr/local/bin/aws configure set default.output json
-
-            # - name: Conf Backend
-            #   run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
-
-            # # - name: Install Terraform
-            # #   uses: hashicorp/setup-terraform@v3
-      
-            # - name: Terraform Init
-            #   run: terraform init
-                
-            # - name: Terraform Plan
-            #   run: terraform plan
+          
 
             # - name: Terraform Apply
             #   run: terraform apply -auto-approve
