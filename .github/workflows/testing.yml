@@ -9,6 +9,20 @@ on:
 
 
 jobs:
+    Commented:
+      name: PR comment
+      if: ${{ github.event.issue.pull_request }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Print PR Number 
+          run: echo "A comment on PR $NUMBER"
+          env: 
+            NUMBER: ${{ github.event.issue.number }}
+        
+        - name: Print github contest object
+          run: echo "${{ toJson(github) }}"
+
+
     Background-Setup:
         runs-on: ubuntu-latest
         steps:
