@@ -11,7 +11,7 @@ on:
 jobs:
     Commented:
       name: PR comment
-      if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply' ) }}
+      if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment == 'tf apply') }}
       runs-on: ubuntu-latest
       steps:
         - name: Print PR Number 
