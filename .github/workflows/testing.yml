@@ -19,6 +19,7 @@ jobs:
       if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply') && github.event.action != 'closed'}}
       env: 
         NUMBER: ${{ github.event.issue.number }}
+        AWS_REGION: ap-south-1
       runs-on: ubuntu-latest
       steps:
         - name: Print PR Number 
@@ -27,23 +28,17 @@ jobs:
         - name: Download PR
           uses: actions/checkout@v3
           with:
-            ref: "refs/pull/${{ github.event.issue.number }}/merge"
+            ref: "refs/pull/${{ env.NUMBER }}/merge"
+
         - name: Configure AWS credentials from Test account
           uses: aws-actions/configure-aws-credentials@v3
           with:
             role-to-assume: ${{ secrets.ASSUMED_ROLE }}
             aws-region: ${{ env.AWS_REGION }}
-
-        - name: Checkout Repository
-          uses: actions/checkout@v2
   
         - name: Terraform Init
           run: terraform init
             
         - name: Terraform Plan
+          if: ${{ github.event.comment.body == 'tf plan' }}
           run: terraform plan
-
-          
-
-            # - name: Terraform Apply
-            #   run: terraform apply -auto-approve
