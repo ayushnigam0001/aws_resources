@@ -45,4 +45,4 @@ jobs:
 
         - name: Terraform Apply
           if: ${{ github.event.comment.body == 'tf apply' }}
-          run: terraform apply
+          run: terraform apply --auto-approve
