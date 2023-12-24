@@ -1,7 +1,7 @@
 name: Terraform Demo
 on: push
 jobs:
-    Helloworld:
+    Background-Setup:
         runs-on: ubuntu-latest
         steps:
 
@@ -15,12 +15,11 @@ jobs:
             - name: install aws cli
               run: sudo ./aws/install --update
 
-            - name: Configure AWS credentials from Test account
-              uses: aws-actions/configure-aws-credentials@v3
-              with:
-                role-to-assume: arn:aws:iam::227390912900:role/GitHubOIDCSTS
-                aws-region: ap-south-1  # Replace with your desired AWS region
-                  # Replace with the ARN of your Terraform role
+            # - name: Configure AWS credentials from Test account
+            #   uses: aws-actions/configure-aws-credentials@v3
+            #   with:
+            #     role-to-assume: arn:aws:iam::227390912900:role/GitHubOIDCSTS
+            #     aws-region: ap-south-1  # Replace with your desired AWS region
 
             - name: Checkout Repository
               uses: actions/checkout@v2
@@ -45,11 +44,14 @@ jobs:
             - name: Install Terraform
               uses: hashicorp/setup-terraform@v3
       
+    Deployment:
+      runs-on: ubuntu-latest
+      steps:
             - name: Terraform Init
               run: terraform init
-            
+                
             - name: Terraform Plan
               run: terraform plan
 
-            # - name: Terraform Apply
-            #   run: terraform apply -auto-approve
+            - name: Terraform Apply
+              run: terraform apply -auto-approve
