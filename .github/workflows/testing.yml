@@ -7,8 +7,9 @@ jobs:
             - name: Configure AWS credentials from Test account
               uses: aws-actions/configure-aws-credentials@v3
               with:
+                role-to-assume: arn:aws:iam::227390912900:role/GitHubOIDCSTS
                 aws-region: ap-south-1  # Replace with your desired AWS region
-                role-to-assume: arn:aws:iam::227390912900:role/GitHubOIDCSTS  # Replace with the ARN of your Terraform role
+                  # Replace with the ARN of your Terraform role
 
             - name: Checkout Repository
               uses: actions/checkout@v2
