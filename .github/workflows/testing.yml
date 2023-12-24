@@ -1,9 +1,19 @@
 name: Terraform Demo
-on: push
+on: 
+  push:
+    branches:
+      - 'main'
+  issue_comment:
+    types: [created]
+
+
+
 jobs:
     Background-Setup:
         runs-on: ubuntu-latest
         steps:
+          - name: Echo
+            run: echo "Hello World!!"
 
             # - name: Configure AWS Manually
             #   run: |
@@ -21,29 +31,29 @@ jobs:
             #     role-to-assume: arn:aws:iam::227390912900:role/GitHubOIDCSTS
             #     aws-region: ap-south-1  # Replace with your desired AWS region
 
-            - name: Checkout Repository
-              uses: actions/checkout@v2
+            # - name: Checkout Repository
+            #   uses: actions/checkout@v2
 
             
 
-            - name: Set Stage
-              run: |
-                /usr/local/bin/aws configure set aws_access_key_id ${{ secrets.ACCESS }} &&\
-                /usr/local/bin/aws configure set aws_secret_access_key ${{ secrets.SECRET }} &&\
-                /usr/local/bin/aws configure set default.region ap-south-1 &&\
-                /usr/local/bin/aws configure set default.output json
+            # - name: Set Stage
+            #   run: |
+            #     /usr/local/bin/aws configure set aws_access_key_id ${{ secrets.ACCESS }} &&\
+            #     /usr/local/bin/aws configure set aws_secret_access_key ${{ secrets.SECRET }} &&\
+            #     /usr/local/bin/aws configure set default.region ap-south-1 &&\
+            #     /usr/local/bin/aws configure set default.output json
 
-            - name: Conf Backend
-              run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
+            # - name: Conf Backend
+            #   run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
 
-            # - name: Install Terraform
-            #   uses: hashicorp/setup-terraform@v3
+            # # - name: Install Terraform
+            # #   uses: hashicorp/setup-terraform@v3
       
-            - name: Terraform Init
-              run: terraform init
+            # - name: Terraform Init
+            #   run: terraform init
                 
-            - name: Terraform Plan
-              run: terraform plan
+            # - name: Terraform Plan
+            #   run: terraform plan
 
-            - name: Terraform Apply
-              run: terraform apply -auto-approve
+            # - name: Terraform Apply
+            #   run: terraform apply -auto-approve
