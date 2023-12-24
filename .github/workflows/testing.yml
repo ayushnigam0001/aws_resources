@@ -2,7 +2,7 @@ name: Terraform Demo
 on: 
   push:
     branches:
-      - 'main'
+      - 'master'
   issue_comment:
     types: [created]
 
