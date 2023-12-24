@@ -8,7 +8,7 @@ jobs:
               uses: actions/checkout@v2
 
             - name: Configure AWS credentials from Test account
-              uses: aws-actions/configure-aws-credentials@v1
+              uses: aws-actions/configure-aws-credentials@v2
               with:
                 aws-region: us-west-1  # Replace with your desired AWS region
                 role-session-name: Github
