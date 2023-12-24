@@ -11,16 +11,13 @@ on:
 jobs:
     Commented:
       name: PR comment
-      if: ${{ github.event.issue.pull_request }}
+      if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply' ) }}
       runs-on: ubuntu-latest
       steps:
         - name: Print PR Number 
           run: echo "A comment on PR $NUMBER"
           env: 
             NUMBER: ${{ github.event.issue.number }}
-        
-        - name: Print github contest object
-          run: echo "${{ toJson(github) }}"
 
 
     Background-Setup:
