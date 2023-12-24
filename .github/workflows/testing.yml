@@ -12,12 +12,18 @@ jobs:
     Commented:
       name: PR comment
       if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment == 'tf apply') }}
+      env: 
+        NUMBER: ${{ github.event.issue.number }}
       runs-on: ubuntu-latest
       steps:
         - name: Print PR Number 
           run: echo "A comment on PR $NUMBER"
-          env: 
-            NUMBER: ${{ github.event.issue.number }}
+      
+        - name: Download PR
+          uses: actions/checkout@v3
+          with:
+            ref: "refs/pull/$NUMBER/merge"
+        - run: ls -al
 
 
     Background-Setup:
