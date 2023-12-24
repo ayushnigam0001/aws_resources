@@ -29,15 +29,15 @@ jobs:
           uses: actions/checkout@v3
           with:
             ref: "refs/pull/${{ env.NUMBER }}/merge"
-            
-        - name: Configure Backend
-          run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
 
         - name: Configure
           uses: aws-actions/configure-aws-credentials@v3
           with:
             role-to-assume: ${{ secrets.ASSUMED_ROLE }}
             aws-region: ${{ env.AWS_REGION }}
+
+        - name: Configure Backend
+          run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
   
         - name: Terraform Init
           run: terraform init
