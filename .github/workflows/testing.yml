@@ -5,15 +5,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
 
-            - name: Configure AWS Manually
-              run: |
-               curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            # - name: Configure AWS Manually
+            #   run: |
+            #    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
-            - name: unzip
-              run: unzip awscliv2.zip
+            # - name: unzip
+            #   run: unzip awscliv2.zip
             
-            - name: install aws cli
-              run: sudo ./aws/install --update
+            # - name: install aws cli
+            #   run: sudo ./aws/install --update
 
             # - name: Configure AWS credentials from Test account
             #   uses: aws-actions/configure-aws-credentials@v3
