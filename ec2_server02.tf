@@ -18,4 +18,6 @@
 #   subnet_id           = "subnet-00848b73f86a37141"
 #   key                 = "pem-key"
 #   security_group_list = ["sg-063bfb276ea028c07"]
-# } #commeted
+# }
+#commeted
+#comment2
