@@ -22,7 +22,7 @@ jobs:
         - name: Download PR
           uses: actions/checkout@v3
           with:
-            ref: "refs/pull/$NUMBER/merge"
+            ref: "refs/pull/${{ github.event.issue.number }}/merge"
         - run: ls -al
 
 
