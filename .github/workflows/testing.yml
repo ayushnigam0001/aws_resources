@@ -1,8 +1,7 @@
 name: Terraform Runner
 on: 
   push:
-    branches:
-      - 'master'
+    branches: [master]
   issue_comment:
     types: [created]
 permissions:
@@ -16,7 +15,7 @@ permissions:
 jobs:
     Commented:
       name: PR comment
-      if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply') && github.event.action != 'closed'}}
+      if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply') && github.event.action != 'closed' && github.event.comment.author_association == 'OWNER'}}
       env: 
         NUMBER: ${{ github.event.issue.number }}
         AWS_REGION: ap-south-1
