@@ -49,3 +49,8 @@ jobs:
         - name: Terraform Apply
           if: ${{ github.event.comment.body == 'tf apply' }}
           run: terraform apply --auto-approve
+    Testing:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Print Github Object
+          run: echo "Printing ${{ toJson(github) }}"
