@@ -1,4 +1,4 @@
-name: Terraform Demo
+name: Terraform Runner
 on: 
   push:
     branches:
