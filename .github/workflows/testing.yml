@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-    Commented:
+    Deployment:
       name: PR comment
       if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply') && github.event.comment.author_association == 'OWNER'}}
       env: 
@@ -39,12 +39,24 @@ jobs:
           run: terraform init
             
         - name: Terraform Plan
+          id: plan
           if: ${{ github.event.comment.body == 'tf plan' }}
           run: terraform plan
 
         - name: Terraform Apply
           if: ${{ github.event.comment.body == 'tf apply' }}
           run: terraform apply --auto-approve
+        
+        - name: Output
+          uses: actions/github-script@v7
+          with:
+            script: |
+              github.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '**Output of the command:**\n`\n${{ steps.plan.outputs }}\n`'
+              })
     Testing:
       runs-on: ubuntu-latest
       steps:
