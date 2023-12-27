@@ -46,7 +46,6 @@ jobs:
           run: |
             output=$(terraform plan)
             echo "Output: $output"
-            echo "::set-env name=OUTPUT::$output"
             gh pr comment ${{ github.event.issue.number }} --body "The output of the command is: $output"
 
         - name: Terraform Apply
