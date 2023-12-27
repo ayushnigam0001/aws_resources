@@ -41,6 +41,8 @@ jobs:
         - name: Terraform Plan
           id: plan
           if: ${{ github.event.comment.body == 'tf plan' }}
+          env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
             output=$(terraform plan)
             echo "Output: $output"
