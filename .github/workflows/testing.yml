@@ -4,6 +4,9 @@ on:
     branches: [master]
   issue_comment:
     types: [created]
+  pull_request:
+    branches:
+      - master
 permissions:
   id-token: write #this is imp to set the token as not have this will not allow to set assumed role
   contents: read
