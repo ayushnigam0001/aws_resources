@@ -1,5 +1,5 @@
 module "sg_server01" {
-  source = "git::https://github.com/ayushnigam0001/terraform-modules.git//aws_sg"
+  source = "git::https://github.com/ayushnigam0001/terraform-modules.git//aws_sg?ref=v1.0.1"
   sg_server_name = "server01"
   vpc_id = "vpc-075681ca5ea808c91"
   sg_details = [
