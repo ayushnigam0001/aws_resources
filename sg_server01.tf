@@ -1,7 +1,7 @@
 module "sg_server01" {
   source = "git::https://github.com/ayushnigam0001/terraform-modules.git//aws_sg"
   sg_server_name = "server01"
-  vpc_id = "vpc-03fdbc523087cf289"
+  vpc_id = "vpc-075681ca5ea808c91"
   sg_details = [
     {
       description = "SSH"
