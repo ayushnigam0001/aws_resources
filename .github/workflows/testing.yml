@@ -9,6 +9,16 @@ permissions:
   pull-requests: write
 
 jobs:
+    Pre-Requisit:
+      name: Install Packages
+      runs-on: self-hosted
+      steps:
+        - name: Download and Install
+          run: |
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&\
+            unzip awscliv2.zip &&\
+            sudo ./aws/install
+
     Deployment:
       name: PR comment
       if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply') && github.event.comment.author_association == 'OWNER'}}
