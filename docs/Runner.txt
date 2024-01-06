@@ -1,0 +1,5 @@
+chmod +x ./bin/libcoreclr.so && \
+chmod +x ./bin/libSystem.Security.Cryptography.Native.OpenSsl.so && \
+chmod +x ./bin/libSystem.IO.Compression.Native.so && \
+chmod +w /home/ec2-user/actions-runner/ && \
+sudo chown -R ec2-user:ec2-user /home/ec2-user/actions-runner/
