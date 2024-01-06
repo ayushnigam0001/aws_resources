@@ -21,11 +21,5 @@ module "alb_app01" {
     forwarding_to = [{
     ip   = "10.0.2.171"
     port = 80
-    },{
-    ip = "10.0.1.209"
-    port = 80
-    },{
-    ip = "10.0.1.225"
-    port = 80
     }]
 }
