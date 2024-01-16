@@ -1,5 +1,5 @@
 # module "alb_app01" {
-#     source = "git::https://github.com/ayushnigam0001/terraform-modules.git//aws_alb"
+#     source = "git::https://github.com/gareeb-engineer/terraform-modules.git//aws_alb"
 #     app_load_balancer_name        = "MyAppLb"
 #     is_internal                   = false
 #     load_balancer_type            = "application"
