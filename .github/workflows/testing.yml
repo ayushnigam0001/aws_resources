@@ -11,7 +11,7 @@ permissions:
 jobs:
     Deployment:
       name: PR comment
-      if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply') && github.event.comment.author_association == 'OWNER'}}
+      if: ${{ github.event.issue.pull_request && (github.event.comment.body == 'tf plan' || github.event.comment.body == 'tf apply') }}
       env: 
         NUMBER: ${{ github.event.issue.number }}
         AWS_REGION: ap-south-1
