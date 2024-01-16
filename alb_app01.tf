@@ -19,7 +19,7 @@ module "alb_app01" {
     list_of_forwarding_path_pattern = ["/"]
 
     forwarding_to = [{
-    ip   = "10.0.2.171"
-    port = 80
+        ip   = "10.0.2.171"
+        port = 80
     }]
 }
