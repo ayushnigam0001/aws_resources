@@ -1,4 +1,4 @@
-module "alb_app01" {
+/*module "alb_app01" {
     source = "git::https://github.com/ayushnigam0001/terraform-modules.git//aws_alb"
     app_load_balancer_name        = "MyAppLb"
     is_internal                   = false
@@ -23,3 +23,4 @@ module "alb_app01" {
         port = 80
     }]
 }
+*/

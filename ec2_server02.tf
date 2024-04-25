@@ -1,4 +1,4 @@
-module "server_02" {
+/*module "server_02" {
   source            = "git::https://github.com/ayushnigam0001/terraform-modules.git//aws_ec2"
   server_name       = "Server02"
   availability_zone = "ap-south-1a"
@@ -18,4 +18,4 @@ module "server_02" {
   subnet_id           = "subnet-00848b73f86a37141"
   key                 = var.public_auth_key
   security_group_list = ["sg-063bfb276ea028c07"]
-}
+}*/
