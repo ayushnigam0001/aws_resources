@@ -31,6 +31,9 @@ jobs:
             role-to-assume: ${{ secrets.ASSUMED_ROLE }}
             aws-region: ${{ env.AWS_REGION }}
 
+        - name: Check Role
+          run: aws iam list-users
+
         - name: Configure Backend
           run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
   
