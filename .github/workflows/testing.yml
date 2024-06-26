@@ -34,6 +34,9 @@ jobs:
         - name: Check users
           run: aws iam list-users
 
+        - name: Check Role
+          run: aws iam list-users
+
         - name: Configure Backend
           run: aws s3 cp s3://file-access-by-ayush/backend.tf backend.tf
   
