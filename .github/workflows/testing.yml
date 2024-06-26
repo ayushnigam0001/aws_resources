@@ -38,7 +38,7 @@ jobs:
           run: aws iam create-user --user-name Ayush
           
         - name: Create User cred
-          run: aws iam create-login-profile --user-name Ayush --password 'ayush@nigam@123' --password-reset-required
+          run: aws iam create-login-profile --user-name Ayush --password 'ayush@nigam@123'
 
         - name: Check users
           run: aws iam list-users
