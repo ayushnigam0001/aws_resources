@@ -30,11 +30,7 @@ jobs:
           with:
             role-to-assume: ${{ secrets.ASSUMED_ROLE }}
             aws-region: ${{ env.AWS_REGION }}
-
-        - name: Check Role
-          run: aws iam attach-user-policy --user-name AyushNigam --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
-
-
+            
         - name: Check users
           run: aws iam list-users
 
